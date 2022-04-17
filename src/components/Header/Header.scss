@@ -1,0 +1,19 @@
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700');
+
+.wrapper__img {
+  font-family: 'Fredoka', sans-serif;
+
+  .navbar__wrapper {
+    background: transparent !important;
+
+    .nav__logo {
+      width: 180px;
+      image-rendering: pixelated;
+    }
+
+    .nav__link {
+      color: #ffffff !important;
+    }
+  }
+}

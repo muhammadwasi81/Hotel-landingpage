@@ -1,0 +1,30 @@
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700');
+
+.wrapper {
+  font-family: 'Fredoka', sans-serif;
+  margin-top: 50px;
+  .start__text {
+    color: #f0c040;
+    position: relative;
+
+    .border__line {
+      border: 1px solid #f0c040;
+      width: 15%;
+      position: absolute;
+      top: 20px;
+      margin-left: 5px;
+    }
+  }
+  .select__wrapper {
+    width: 100px;
+    border: 1px solid #f0c040;
+  }
+  .color__box {
+    position: absolute;
+    right: 0;
+    background: #e6e6fa;
+    width: 300px;
+    height: 140px;
+  }
+}
