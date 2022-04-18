@@ -14,3 +14,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Fredoka', sans-serif;
 }
+
+/* scroll bar */
+::selection {
+  background-color: #f0575d;
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #824a4c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f0575d;
+  border-radius: 10px;
+}

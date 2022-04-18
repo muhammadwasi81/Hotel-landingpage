@@ -1,43 +1,74 @@
 import React from 'react'
-import { Col, Container, Row, Form } from 'react-bootstrap'
-import './Elegence.scss'
+import { Col, Container, Row } from 'react-bootstrap'
+import LazyShow from '../animation/LazyShow'
+import './Retail.scss'
+import { IoIosLeaf } from 'react-icons/io'
 
-export default function Elegence() {
-  return (
-    <div className="wrapper">
-      <Container>
-        <Row>
-          <Col sm={6}>
-            <p className="start__text fs-4">
-              Elegance<span className="border__line"></span>{' '}
-            </p>
-            <p className="fs-1">
-              Draw <br />
-              <span className="fs-1">Your Elegance</span>
-            </p>
-            <p className="mt-5">Lorem ipsum dolor sit</p>
-            <div className="select__wrapper mt-5">
-              <Form.Select aria-label="Default select example">
-                <option>Room</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </Form.Select>
-            </div>
-          </Col>
-          <Col sm={6} className="my-2">
-            <img
-              src="./assets/alexander-kaunas-TAgGZWz6Qg8-unsplash.jpg"
-              async
-              alt="elegance"
-              className="img-fluid"
-            />
-            <div style={{ position: 'relative' }}>
-              <div className="color__box"></div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+const CustomGoals = (props) => (
+  <div className="main__wrapper  text-center">
+    <div
+      className="box__one  d-flex justify-content-around"
+      style={{ width: '8rem', height: '8rem' }}
+    >
+      <div className="inner__content my-3">
+        <IoIosLeaf className="icon" />
+      </div>
     </div>
+    <p>lorem</p>
+    <strong>$000</strong>
+  </div>
+)
+export default function Retail() {
+  return (
+    <LazyShow>
+      <div className="retail__wrapper">
+        <Container>
+          <Row>
+            <Col sm={12}>
+              <p className="start__text fs-4">
+                Retail<span className="border__line"></span>{' '}
+              </p>
+              <p className="fs-1">
+                Why Retail?
+                <br />
+              </p>
+            </Col>
+            <Col sm={4} className="d-flex justify-content-around">
+              <CustomGoals />
+            </Col>
+            <Col sm={4} className="d-flex justify-content-around">
+              <CustomGoals />
+            </Col>
+            <Col sm={4} className="d-flex justify-content-around">
+              <CustomGoals />
+            </Col>
+            <Col sm={12}>
+              <Row>
+                <Col sm={3}>
+                  <p className="mt-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis dolorem officiis sapiente velit tempore sit, quidem
+                    nobis incidunt ipsa pariatur explicabo natus voluptatum odit
+                  </p>
+                </Col>
+                <Col sm={9}>
+                  <Row>
+                    <Col sm={3} className="d-flex justify-content-center">
+                      <CustomGoals />
+                    </Col>
+                    <Col sm={3} className="d-flex justify-content-around">
+                      <CustomGoals />
+                    </Col>
+                    <Col sm={3} className="d-flex justify-content-around">
+                      <CustomGoals />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </LazyShow>
   )
 }

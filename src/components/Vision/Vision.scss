@@ -1,9 +1,9 @@
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700');
 
-.crafting__wrapper {
+.vision_wrapper {
   font-family: 'Fredoka', sans-serif;
-  margin-top: 125px;
+  margin-top: 150px;
   .start__text {
     color: #000000;
     position: relative;
@@ -15,6 +15,10 @@
       top: 20px;
       margin-left: 5px;
     }
+  }
+  .arab__img {
+    height: 100vh;
+    width: 100%;
   }
   .select__wrapper {
     width: 100px;

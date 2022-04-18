@@ -1,22 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
-import { auth, logout } from '../../firebase'
+import { auth, logout, db } from '../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useHistory } from 'react-router-dom'
+import { query, collection, getDocs, where } from 'firebase/firestore'
 import './Header.scss'
 
 export default function Header() {
-  const { user, loading, error } = useAuthState(auth)
+  const [name, setName] = useState('')
+  const [user, loading, error] = useAuthState(auth)
   const history = useHistory()
 
+  const fetchUser = async () => {
+    try {
+      const q = query(collection(db, 'users'), where('uid', '==', user?.uid))
+      const doc = await getDocs(q)
+      const data = doc.docs[0].data()
+
+      setName(data?.name)
+    } catch (err) {
+      console.error(err)
+      alert('An error occured while fetching user data')
+    }
+  }
   useEffect(() => {
-    if (loading) {
-      return
+    if (loading) return
+    if (!user) {
+      return history.push('/')
     }
-    if (user) {
-      history.push('/home')
-    }
-    console.log('user logged in successfully')
+    fetchUser()
   }, [user, loading])
 
   if (error) return <pre>{error.message}</pre>
@@ -54,9 +66,17 @@ export default function Header() {
                 </Nav.Link>
               </Nav>
               <Nav className="ml-auto">
-                <Button onClick={logout} className="signout__btn">
-                  Sign Out
-                </Button>
+                <p className="text-white mt-3 m-1">{user?.email}</p>
+                <div className="signout__wrapper">
+                  <img
+                    src={user?.photoURL}
+                    alt={user?.name}
+                    className="user__avatar"
+                  />
+                  <div className="avatar__dropdown">
+                    <span onClick={logout}>Sign out</span>
+                  </div>
+                </div>
               </Nav>
             </Navbar.Collapse>
           </Container>
