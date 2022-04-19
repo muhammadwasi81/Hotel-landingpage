@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import { auth, logout, db } from '../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useHistory } from 'react-router-dom'
@@ -20,7 +20,6 @@ export default function Header() {
       setName(data?.name)
     } catch (err) {
       console.error(err)
-      alert('An error occured while fetching user data')
     }
   }
   useEffect(() => {
@@ -41,7 +40,6 @@ export default function Header() {
             <Navbar.Brand href="/">
               <img
                 src="/assets/logo.png"
-                async
                 alt="nav-logo"
                 className="nav__logo"
               />
