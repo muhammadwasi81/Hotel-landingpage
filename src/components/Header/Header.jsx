@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useHistory } from 'react-router-dom'
 import { query, collection, getDocs, where } from 'firebase/firestore'
 import './Header.scss'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Header() {
   const [name, setName] = useState('')
@@ -18,6 +20,7 @@ export default function Header() {
       const data = doc.docs[0].data()
 
       setName(data?.name)
+      toast.success('User Registered Successfully')
     } catch (err) {
       console.error(err)
     }
@@ -26,6 +29,8 @@ export default function Header() {
     if (loading) return
     if (!user) {
       return history.push('/')
+    } else if (user) {
+      toast.success('User Logged In Successfully')
     }
     fetchUser()
   }, [user, loading])
@@ -35,6 +40,12 @@ export default function Header() {
   return (
     <>
       <div className="wrapper__img">
+        <ToastContainer
+          position="top-right"
+          closeOnClick
+          theme="colored"
+          limit={1}
+        />
         <Navbar expand="lg" sticky="top" className="navbar__wrapper">
           <Container>
             <Navbar.Brand href="/">
